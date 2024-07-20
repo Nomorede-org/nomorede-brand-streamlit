@@ -7,7 +7,7 @@ from config import baseUrl
 import requests
 from login import login
 from create_user import CreateUser
-from streamlit_option_menu import option_menu
+
 # Streamlit Page Configuration
 st.set_page_config(
     page_title="Nomorede",
@@ -22,36 +22,36 @@ st.set_page_config(
 )
 
 
-with st.sidebar:
-    selected = option_menu("Main Menu", ['Profile',"Login","Create User","Create Catalogue","Create Product"], 
-        icons=['bi-person-fill', 'bi-box-arrow-in-right',"bi-person-fill-add",'bi-book-fill',"bi-box-fill"], menu_icon="bi-list", default_index=1)
-
-if selected.lower()=="login":
+# with st.sidebar:
+    # selected = option_menu("Main Menu", ['Profile',"Login","Create User","Create Catalogue","Create Product"], 
+    #     icons=['bi-person-fill', 'bi-box-arrow-in-right',"bi-person-fill-add",'bi-book-fill',"bi-box-fill"], menu_icon="bi-list", default_index=1)
+add_sidebar = st.sidebar.selectbox('Menu', ('Profile',"Login","Create User","Create Catalogue","Create Product"),index=1)
+if add_sidebar.lower()=="login":
     st.title("Login")
     st.divider()
     login()
 
-if selected.lower()=='profile':
+if add_sidebar.lower()=='profile':
     if 'partner_id' not in st.session_state:
         st.warning("Please login first")
     else:
         profile()
 
-if selected.lower()=='create user':
+if add_sidebar.lower()=='create user':
     if 'partner_id' not in st.session_state:
         st.warning("Please login first")
     else:
         st.title("Create User")
         CreateUser()
 
-if selected.lower()=="create product":
+if add_sidebar.lower()=="create product":
     if 'partner_id' not in st.session_state:
         st.warning("Please login first")
     else:
         st.title("Create Product")
         CreateProduct()
 
-if selected.lower()=="create catalogue":
+if add_sidebar.lower()=="create catalogue":
     if 'partner_id' not in st.session_state:
         st.warning("Please login first")
     else:
