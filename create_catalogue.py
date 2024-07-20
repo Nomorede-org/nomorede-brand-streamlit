@@ -55,6 +55,7 @@ def CreateCatalogue():
             ctalogue_post=requests.post(baseUrl+"/brand/catalogue/uploadpdf",files=files, data=data)
             if ctalogue_post.status_code == 200:
                 st.success("Catalogue file uploaded successfully!")
+                st.session_state.userdata=getUser(st.session_state.partner_id)
             else:
                 st.error("Failed to upload catalogue file. Please try again.")
         else:

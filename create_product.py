@@ -3,6 +3,7 @@ from enum import Enum
 import streamlit as st
 import requests
 from config import baseUrl
+from create_user import getUser
 
 class StylingProductCategory(str,Enum):
     # Hair Styling
@@ -94,6 +95,11 @@ def CreateProduct():
         st.session_state['special_sale']=[]
     catalogue_data=[]
     catagory_data=list(StylingProductCategory)
+    
+    catalogue_response=requests.get(baseUrl+f"/brand/product/get/{st.session_state.partner_id}")
+    if catalogue_response.status_code==200:
+        st.dataframe(catalogue_response.json())
+    st.divider()    
     for i in st.session_state.userdata['catalogue_id']:
         response=requests.get(baseUrl+f"/brand/catalogue/{i}").json()
         catalogue_data.append({"catalogue_name":response['catalogue_name'],"_id":response['_id']})
@@ -194,6 +200,7 @@ def CreateProduct():
         # st.json(payload)
         response = requests.post(baseUrl+"/brand/product/create", json=payload)
         if response.status_code == 200:
+            st.session_state.userdata=getUser(st.session_state.partner_id)
             st.success("Product created successfully!")
             product_id=response.json()['product_id']
             if product_id and uploaded_files:
@@ -208,4 +215,3 @@ def CreateProduct():
         else:
             st.error("Product creation failed. Please try again.")
             st.session_state.special_sale.clear()
-        # st.session_state.metadata.clear
