@@ -1,0 +1,1 @@
+baseUrl="https://nomorede-backend-test-wxlxpjor2a-el.a.run.app"
