@@ -1,0 +1,41 @@
+{
+    "brand_id": "string",
+    "gender": "Male",
+    "catalogue_id": "string",
+    "sizes": [],
+    "mpn": "string",
+    "metadata": {
+      "texture": "string",
+      "color": "string",
+      "fabric": "string",
+      "material": "string",
+      "metal": "string",
+      "pattern": "string",
+      "style": "string",
+      "sleeves": "string",
+      "neck_line": "string",
+      "season": "string",
+      "tone": "string",
+      "body_shape": "string",
+      "face_shape": "string"
+    },
+    "category": "Hair Gels",
+    "tags": [],
+    "special_sale": [
+      {
+        "start_date": "2024-07-20T07:40:34.837Z",
+        "end_date": "2024-07-20T07:40:34.837Z",
+        "price": 0,
+        "price_unit": "string"
+      }
+    ],
+    "weight": 0,
+    "images": [],
+    "quantity": 0,
+    "price": 0,
+    "price_unit": "string",
+    "description": "string",
+    "reviews": [],
+    "discounts": 0,
+    "created_by": "string"
+  }
